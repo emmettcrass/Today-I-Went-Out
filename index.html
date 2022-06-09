@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Human Game</title>
+    <script src = "/libs/phaser.min.js"></script>
+    <script src = "/GameScene.js"></script>
+    <script type="text/javascript" src="/utils/align.js"></script>
+	<script type="text/javascript" src="/utils/alignGrid.js"></script>
+</head>
+<body>
+    <script>
+        
+            const config = {
+                type: Phaser.AUTO,
+                width: 800,
+                height: 600,
+                backgroundColor: "#5f2a55",
+                physics: {
+                    default: 'arcade',
+                    arcade: {
+                    gravity: { y: 0 },
+                    enableBody: true,
+                    debug: true,
+                    }
+                },
+                scene: [GameScene]
+                };
+
+                const game = new Phaser.Game(config);
+
+    </script>
+</body>
+</html>
