@@ -29,6 +29,8 @@ class GameScene extends Phaser.Scene {
    
     //set collisions
     this.physics.add.collider(this.chair, this.tv);
+    this.physics.add.collider(this.chair, this.table);
+    this.physics.add.collider(this.chair, this.bed);
 
             //make an align grid
             this.aGrid = new AlignGrid({
