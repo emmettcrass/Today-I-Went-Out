@@ -32,7 +32,7 @@ class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.chair, this.table);
     this.physics.add.collider(this.chair, this.bed);
 
-            //make an align grid
+            /*make an align grid
             this.aGrid = new AlignGrid({
               scene: this,
               rows: 12,
@@ -42,7 +42,7 @@ class GameScene extends Phaser.Scene {
           //show the numbers
           //
           this.aGrid.showNumbers();
-          //
+          */
  // Set cursor keys here!
     this.cursors
     = this.input.keyboard.createCursorKeys();
