@@ -1,5 +1,3 @@
-const gameState = {};
-
 class GameScene extends Phaser.Scene {
   constructor() {
     super({ key:
@@ -16,6 +14,8 @@ class GameScene extends Phaser.Scene {
   }
   
    create() {
+    this.headphones = this.physics.add.image(640, 140, '#');
+    this.headphones = this.physics.add.image(640, 230, '#');
     this.table = this.physics.add.image(700, 162, 'table');
     this.table.setImmovable(true);
     this.tv = this.physics.add.image(370, 150, 'tv');
@@ -28,6 +28,7 @@ class GameScene extends Phaser.Scene {
     this.chair.setCollideWorldBounds(true);
    
     //set collisions
+    this.physics.add.collider(this.chair, this.heaphones);
     this.physics.add.collider(this.chair, this.tv);
     this.physics.add.collider(this.chair, this.table);
     this.physics.add.collider(this.chair, this.bed);
@@ -43,9 +44,19 @@ class GameScene extends Phaser.Scene {
           //
           this.aGrid.showNumbers();
           */
+
+      this.physics.add.overlap(this.chair, this.headphones, this.collectItem, null, this);
+
  // Set cursor keys here!
     this.cursors
     = this.input.keyboard.createCursorKeys();
+
+//lets change scenes
+		this.add.text( 150, 250, 'Click to edu!', {fill: '#000000', fontSize: '20px'})
+		this.input.on('pointerdown', () => {
+			this.scene.stop('GameScene')
+			this.scene.start('EduScene')
+		})
   }
   
    update() {
@@ -64,5 +75,9 @@ class GameScene extends Phaser.Scene {
    if (this.cursors.down.isDown) {
      this.chair.setVelocityY(150);
    };
-   
-}}
+   }
+    collectItem(chair, headphones) {
+    headphones.destroy();
+  }
+     
+}
