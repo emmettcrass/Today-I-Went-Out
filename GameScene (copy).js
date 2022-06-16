@@ -78,8 +78,6 @@ class GameScene extends Phaser.Scene {
    }
     collectItem(chair, headphones) {
     headphones.destroy();
-    this.scene.pause();
-    this.scene.run('HeadphoneScene');
   }
      
 }
