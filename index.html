@@ -2,14 +2,21 @@
 <html lang="en">
 <head>
     <title>Human Game</title>
-    <script src = "/libs/phaser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.55.2/phaser.min.js"></script>
+<script src = "/libs/phaser.min.js"></script>
+    <script src = "/MenuScene.js"></script>
     <script src = "/GameScene.js"></script>
+    <script src = "/EduScene.js"></script>
+    <script src = "/BathScene.js"></script>
+    <script src = "/PalScene.js"></script>
     <!--<script type="text/javascript" src="/utils/align.js"></script>
 	<script type="text/javascript" src="/utils/alignGrid.js"></script>-->
 </head>
 <body>
     <script>
-        
+
+      const gameState = {};
+      
             const config = {
                 type: Phaser.AUTO,
                 width: 800,
@@ -24,7 +31,7 @@
                     debug: true,
                     }
                 },
-                scene: [GameScene]
+                scene: [MenuScene, GameScene, EduScene, BathScene, PalScene]
                 };
 
                 const game = new Phaser.Game(config);
