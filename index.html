@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Human Game</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.55.2/phaser.min.js"></script>
-<script src = "/libs/phaser.min.js"></script>
-    <script src = "/MenuScene.js"></script>
-    <script src = "/GameScene.js"></script>
-    <script src = "/EduScene.js"></script>
-    <script src = "/BathScene.js"></script>
-    <script src = "/PalScene.js"></script>
+    <script src="/libs/phaser.min.js"></script>
+    <script src="/MenuScene.js"></script>
+    <script src="/GameScene.js"></script>
+    <script src="/HeadphoneScene.js"></script>
+    <script src="/EduScene.js"></script>
+    <script src="/BathScene.js"></script>
+    <script src="/PalScene.js"></script>
     <!--<script type="text/javascript" src="/utils/align.js"></script>
 	<script type="text/javascript" src="/utils/alignGrid.js"></script>-->
-</head>
-<body>
+  </head>
+  <body>
     <script>
+      const gameState = {}
 
-      const gameState = {};
-      
-            const config = {
-                type: Phaser.AUTO,
-                width: 800,
-                height: 600,
-                backgroundColor: "#5f2a55",
-                physics: {
-                    default: 'arcade',
-                    arcade: {
-                    gravity: { y: 0 },
-                    pixelArt: true,
-                    enableBody: true,
-                    debug: true,
-                    }
-                },
-                scene: [MenuScene, GameScene, EduScene, BathScene, PalScene]
-                };
+      const config = {
+        type: Phaser.AUTO,
+        width: 800,
+        height: 600,
+        backgroundColor: '#5f2a55',
+        physics: {
+          default: 'arcade',
+          arcade: {
+            gravity: { y: 0 },
+            pixelArt: true,
+            enableBody: true,
+            debug: true
+          }
+        },
+        scene: [MenuScene, GameScene, EduScene, BathScene, HeadphoneScene, PalScene]
+      }
 
-                const game = new Phaser.Game(config);
-
+      const game = new Phaser.Game(config)
     </script>
-</body>
+  </body>
 </html>
