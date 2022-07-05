@@ -44,7 +44,7 @@ class GameScene extends Phaser.Scene {
           this.aGrid.showNumbers();
           */
 
-    this.physics.add.overlap(this.chair, this.headphones, this.collectItem)
+    this.physics.add.overlap(this.chair, this.headphones, this.collectItem, null, this)
 
     // function detectOverlap() {
     //   this.onHeadphones = true
@@ -84,7 +84,7 @@ class GameScene extends Phaser.Scene {
     //headphones.destroy()
     this.onHeadphones = true
     console.log(`made it to collectitem`)
-    this.scene.pause()
+    this.scene.pause('GameScene')
     console.log(`made it to pause`)
     this.scene.start('HeadphoneScene')
   }
