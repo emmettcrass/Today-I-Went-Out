@@ -46,11 +46,11 @@ class GameScene extends Phaser.Scene {
 
     this.physics.add.overlap(this.chair, this.headphones, this.collectItem, null, this)
 
-    // function detectOverlap() {
-    //   this.onHeadphones = true
-    //   console.log(`detect on headphones ${this.onHeadphones}`)
-    // }
-    //this.collectItem
+    /* function detectOverlap() {
+      this.onHeadphones = true
+      console.log(`detect on headphones ${this.onHeadphones}`)
+     }
+    this.collectItem*/
 
     // Set cursor keys here!
     this.cursors = this.input.keyboard.createCursorKeys()
@@ -80,12 +80,13 @@ class GameScene extends Phaser.Scene {
       this.chair.setVelocityY(150)
     }
   }
+  //this destroys the headphone item when collected, pauses GameScene and starts HeadphoneScene
   collectItem(chair, headphones) {
-    //headphones.destroy()
+    headphones.destroy()
     this.onHeadphones = true
     console.log(`made it to collectitem`)
     this.scene.pause('GameScene')
     console.log(`made it to pause`)
-    this.scene.start('HeadphoneScene')
+    this.scene.launch('HeadphoneScene')
   }
 }
