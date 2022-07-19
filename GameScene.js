@@ -16,10 +16,16 @@ class GameScene extends Phaser.Scene {
     this.headphones = this.physics.add.image(640, 230, '#')
 
     this.table = this.physics.add.image(700, 162, 'table')
+    this.table.setSize(198, 69, true)
+    this.table.body.setOffset(0,0)
     this.table.setImmovable(true)
     this.tv = this.physics.add.image(370, 150, 'tv')
+    this.tv.setSize(250, 125, true)
+    this.tv.body.setOffset(0,0)
     this.tv.setImmovable(true)
     this.bed = this.physics.add.image(84, 295, 'bed')
+    this.bed.setSize(165, 325, true)
+    this.bed.body.setOffset(0,0)
     this.bed.setImmovable(true)
     //make chair player
     this.chair = this.physics.add.image(370, 400, 'chair')
