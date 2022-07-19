@@ -9,9 +9,10 @@ class HeadphoneScene extends Phaser.Scene {
   create() {
     this.hpInfo = this.add.image(400, 300, 'hpInfo')
     console.log(`im in headphonescene create`)
-  }
+    this.add.text( 150, 250, 'Click to go back!', {fill: '#000000', fontSize: '20px'})
+		this.input.on('pointerdown', () => {
+			this.scene.stop('HeadphoneScene')
+			this.scene.launch('GameScene')
+  })}
 
-  update() {
-    console.log(`im in headphonescene update`)
-  }
 }
