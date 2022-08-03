@@ -36,26 +36,39 @@ class GameScene extends Phaser.Scene {
     this.player = this.physics.add.sprite(370, 400, 'player');
     this.player.setSize(98, 165, true)
     this.player.body.setOffset(20, 15)
-    var frameNames= this.textures.get('player').getFrameNames();
+    var frameNames = this.textures.get('player').getFrameNames();
 
     //player animations//
 
-console.log(frameNames);
-console.log("you made it");
-
-this.anims.create({
-  key: 'walk',
-  frames: [
-      { key: 'player',frame:"rw-001.png" },
-      { key: 'player',frame:"rw-002.png" },
-      { key: 'player',frame:"rw-003.png" },
-      { key: 'player',frame:"rw-004.png" },
-      { key: 'player',frame:"rw-005.png" },
-      { key: 'player',frame:"rw-006.png" },
-  ],
-  frameRate: 6,
-  repeat: -1
-});
+    console.log(frameNames);
+    console.log("you made it");
+    this.anims.create({
+      key: 'walk',
+      frames: this.anims.generateFrameNames('player', {
+          start: 1,
+          end: 6,
+          zeroPad: 3,
+          prefix: 'rw-',
+          suffix: '.png'
+        }),
+      frameRate: 6,
+      repeat: -1,
+    });
+    //this works//
+    /*this.anims.create({
+      key: 'walk',
+      frames: [
+          { key: 'player',frame:"rw-001.png" },
+          { key: 'player',frame:"rw-002.png" },
+          { key: 'player',frame:"rw-003.png" },
+          { key: 'player',frame:"rw-004.png" },
+          { key: 'player',frame:"rw-005.png" },
+          { key: 'player',frame:"rw-006.png" },
+      ],
+      frameRate: 6,
+      repeat: -1
+    });
+    */
 
     //keeps the player in screen//
     this.player.setCollideWorldBounds(true)
