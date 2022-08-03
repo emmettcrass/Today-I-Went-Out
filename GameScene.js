@@ -7,7 +7,7 @@ class GameScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.atlas('player', 'assets/imgs/anim/walk-r/walk-r.json');
+    this.load.atlas('player', '/assets/imgs/player.png', '/assets/imgs/player.json');
     this.load.image('table', '/assets/imgs/table.PNG');
     this.load.image('bed', '/assets/imgs/bed.PNG');
     this.load.image('tv', '/assets/imgs/tv.PNG');
@@ -33,17 +33,29 @@ class GameScene extends Phaser.Scene {
     this.bed.setImmovable(true)
 
     //make player
-    this.player = this.physics.add.sprite(370, 400, 'player', 'assets/imgs/anim/walk-r/r-l-1.png')
+    this.player = this.physics.add.sprite(370, 400, 'player');
+    this.player.setSize(98, 165, true)
+    this.player.body.setOffset(20, 15)
+    var frameNames= this.textures.get('player').getFrameNames();
 
     //player animations//
 
-    this.anims.create({
-      key: 'walk-r',
-      frames: this.anims.generateFrameNumbers("walk-r"),
-      frameRate: 6,
-      repeat: -1
-    });
-    player.anims.play('walk-r');
+console.log(frameNames);
+console.log("you made it");
+
+this.anims.create({
+  key: 'walk',
+  frames: [
+      { key: 'player',frame:"r-l-1.png" },
+      { key: 'player',frame:"r-l-2.png" },
+      { key: 'player',frame:"r-l-3.png" },
+      { key: 'player',frame:"r-l-4.png" },
+      { key: 'player',frame:"r-l-5.png" },
+      { key: 'player',frame:"r-l-6.png" },
+  ],
+  frameRate: 6,
+  repeat: -1
+});
 
     //keeps the player in screen//
     this.player.setCollideWorldBounds(true)
@@ -109,7 +121,7 @@ class GameScene extends Phaser.Scene {
     }
 
     if (this.player.body.velocity.x !== 0 || this.player.body.velocity.y !== 0) {
-      this.player.play('walk-r', true);
+      this.player.play('walk', true);
     } else {
       this.player.play('idle', true);
     }
