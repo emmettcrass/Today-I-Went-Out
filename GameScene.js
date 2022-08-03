@@ -46,12 +46,12 @@ console.log("you made it");
 this.anims.create({
   key: 'walk',
   frames: [
-      { key: 'player',frame:"r-l-1.png" },
-      { key: 'player',frame:"r-l-2.png" },
-      { key: 'player',frame:"r-l-3.png" },
-      { key: 'player',frame:"r-l-4.png" },
-      { key: 'player',frame:"r-l-5.png" },
-      { key: 'player',frame:"r-l-6.png" },
+      { key: 'player',frame:"rw-001.png" },
+      { key: 'player',frame:"rw-002.png" },
+      { key: 'player',frame:"rw-003.png" },
+      { key: 'player',frame:"rw-004.png" },
+      { key: 'player',frame:"rw-005.png" },
+      { key: 'player',frame:"rw-006.png" },
   ],
   frameRate: 6,
   repeat: -1
