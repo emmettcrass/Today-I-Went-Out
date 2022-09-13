@@ -11,11 +11,82 @@ class GameScene extends Phaser.Scene {
     this.load.image('table', '/assets/imgs/table.PNG');
     this.load.image('bed', '/assets/imgs/bed.PNG');
     this.load.image('tv', '/assets/imgs/tv.PNG');
+    this.load.image('bedroom', '/assets/imgs/bedroom.png');
+
+    this.load.plugin('rexglowfilter2pipelineplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilter2pipelineplugin.min.js', true);
+
+    this.load.scenePlugin({
+      key: 'rexuiplugin',
+      url: 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js',
+      sceneKey: 'rexUI'
+  });     
+
   }
 
   create() {
-    this.headphones = this.physics.add.image(640, 140, '#')
-    this.headphones = this.physics.add.image(640, 230, '#')
+    //the beginning pop up starts here//
+
+    var dialog = this.rexUI.add.dialog({
+      x: 400,
+      y: 300,
+fontSize: '16px',
+
+      background: this.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x1565c0),
+
+      content: createLabel(this, 'Hello, your name is Grub.\nHurry to gather your tools,\nyou\'ve got a big day ahead!'),
+
+      actions: [
+          createLabel(this, 'Let\'s go!')
+      ],
+
+      space: {
+          left: 20,
+          right: 20,
+          top: 10,
+          bottom: -20,
+          content: 25,
+          action: 15,
+      },
+
+      align: {
+          content: 'center',
+          actions: 'right',
+      },
+  })
+
+  .layout()
+  //.drawBounds(this.add.graphics(), 0xff0000)
+  .popUp(1000);
+
+var tween = this.tweens.add({
+  targets: dialog,
+  scaleX: 1,
+  scaleY: 1,
+  ease: 'Bounce', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+  duration: 1000,
+  repeat: 0, // -1: infinity
+  yoyo: false
+});
+
+//pop up ends here
+
+this.add.image(800, 600, 'bedroom').setPipeline('Light2D');
+
+this.lights.enable().setAmbientColor(0x555555);
+
+var hsv = Phaser.Display.Color.HSVColorWheel();
+
+var radius = 80;
+var intensity = 80;
+var x = radius;
+var y = 0;
+
+var color = hsv[10].color;
+
+var light = this.lights.addLight(400, y, radius, color, intensity);
+
+    this.headphones = this.physics.add.image(640, 140, 'tv')
+    this.headphones = this.physics.add.image(640, 230, 'tv')    
 
     this.table = this.physics.add.image(700, 162, 'table')
     this.table.setSize(198, 69, true)
@@ -111,6 +182,7 @@ class GameScene extends Phaser.Scene {
       this.scene.stop('GameScene')
       this.scene.start('EduScene')
     })
+
   }
 
   update() {
@@ -149,3 +221,24 @@ class GameScene extends Phaser.Scene {
     this.scene.launch('HeadphoneScene')
   }
 }
+
+var createLabel = function (scene, text) {
+  return scene.rexUI.add.label({
+      width: 40, // Minimum width of round-rectangle
+      height: 40, // Minimum height of round-rectangle
+    
+      background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x5e92f3),
+
+      text: scene.add.text(0, 0, text, {
+          fontSize: '24px'
+      }),
+
+      space: {
+          left: 10,
+          right: 10,
+          top: 10,
+          bottom: 10
+      }
+  });
+}
+
