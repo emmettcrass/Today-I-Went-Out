@@ -6,10 +6,12 @@
     <!--<script src="/libs/phaser.min.js"></script>*/ (ONLY FOR OFFLINE CODING)-->
     <script src="/MenuScene.js"></script>
     <script src="/GameScene.js"></script>
+    <script src="/Transit.js"></script>
     <script src="/HeadphoneScene.js"></script>
     <script src="/EduScene.js"></script>
     <script src="/BathScene.js"></script>
     <script src="/PalScene.js"></script>
+    <stylesheet src="style.css"></stylesheet>
     <!--<script type="text/javascript" src="/utils/align.js"></script>
 	<script type="text/javascript" src="/utils/alignGrid.js"></script>-->
   </head>
@@ -29,12 +31,13 @@
             gravity: { y: 0 },
             enableBody: true,
             debug: true
-          }
-        },
-        scene: [MenuScene, GameScene, EduScene, BathScene, HeadphoneScene, PalScene]
-      }
+        }
+      },
+        scene: [MenuScene, GameScene, Transit, EduScene, BathScene, HeadphoneScene, PalScene]
+      };
 
       const game = new Phaser.Game(config)
     </script>
+
   </body>
 </html>

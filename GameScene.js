@@ -8,10 +8,13 @@ class GameScene extends Phaser.Scene {
 
   preload() {
     this.load.atlas('player', '/assets/imgs/player.png', '/assets/imgs/player.json');
-    this.load.image('table', '/assets/imgs/table.PNG');
-    this.load.image('bed', '/assets/imgs/bed.PNG');
-    this.load.image('tv', '/assets/imgs/tv.PNG');
+    this.load.image('bed', '/assets/imgs/bed.png');
+    this.load.image('desk', '/assets/imgs/desk.png');
+    this.load.image('boxShoe', '/assets/imgs/boxShoe.png');
     this.load.image('bedroom', '/assets/imgs/bedroom.png');
+    this.load.image('agenda', '/assets/imgs/agenda.png');
+    this.load.image('chair', '/assets/imgs/chair.png');
+    this.load.image('dresser', '/assets/imgs/dresser.png');
 
     this.load.plugin('rexglowfilter2pipelineplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilter2pipelineplugin.min.js', true);
 
@@ -70,33 +73,22 @@ var tween = this.tweens.add({
 
 //pop up ends here
 
-this.add.image(800, 600, 'bedroom').setPipeline('Light2D');
+this.add.image(400, 300, 'bedroom')
 
-this.lights.enable().setAmbientColor(0x555555);
 
-var hsv = Phaser.Display.Color.HSVColorWheel();
 
-var radius = 80;
-var intensity = 80;
-var x = radius;
-var y = 0;
+    this.headphones = this.physics.add.image(640, 140, 'boxShoe')
+    this.headphones = this.physics.add.image(640, 230, 'boxShoe')    
 
-var color = hsv[10].color;
+    this.desk = this.physics.add.image(700, 162, 'desk')
+    this.desk.setSize(198, 69, true)
+    this.desk.body.setOffset(0, 0)
+    this.desk.setImmovable(true)
 
-var light = this.lights.addLight(400, y, radius, color, intensity);
-
-    this.headphones = this.physics.add.image(640, 140, 'tv')
-    this.headphones = this.physics.add.image(640, 230, 'tv')    
-
-    this.table = this.physics.add.image(700, 162, 'table')
-    this.table.setSize(198, 69, true)
-    this.table.body.setOffset(0, 0)
-    this.table.setImmovable(true)
-
-    this.tv = this.physics.add.image(370, 150, 'tv')
-    this.tv.setSize(250, 125, true)
-    this.tv.body.setOffset(0, 0)
-    this.tv.setImmovable(true)
+    this.boxShoe = this.physics.add.image(370, 150, 'boxShoe')
+    this.boxShoe.setSize(250, 125, true)
+    this.boxShoe.body.setOffset(0, 0)
+    this.boxShoe.setImmovable(true)
 
     this.bed = this.physics.add.image(84, 295, 'bed')
     this.bed.setSize(165, 325, true)
@@ -146,8 +138,8 @@ var light = this.lights.addLight(400, y, radius, color, intensity);
 
     //set collisions
     this.physics.add.collider(this.player, this.heaphones)
-    this.physics.add.collider(this.player, this.tv)
-    this.physics.add.collider(this.player, this.table)
+    this.physics.add.collider(this.player, this.boxShoe)
+    this.physics.add.collider(this.player, this.desk)
     this.physics.add.collider(this.player, this.bed)
 
     /*make an align grid
@@ -180,7 +172,7 @@ var light = this.lights.addLight(400, y, radius, color, intensity);
     })
     this.input.on('pointerdown', () => {
       this.scene.stop('GameScene')
-      this.scene.start('EduScene')
+      this.scene.start('Transit')
     })
 
   }
