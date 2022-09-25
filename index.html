@@ -6,6 +6,7 @@
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.55.2/phaser.min.js"></script> (For online coding) -->
     <script src="/libs/phaser.min.js"></script>
     <!-- <script src="/basicButton.js"></script> -->
+    <script src="/Preloader.js"></script>
     <script src="/MenuScene.js"></script>
     <script src="/GameScene.js"></script>
     <script src="/HeadphoneScene.js"></script>
@@ -33,7 +34,7 @@
             debug: true
           }
         },
-        scene: [GameScene, EduScene, BathScene, HeadphoneScene, PalScene]
+        scene: [Preloader, GameScene, EduScene, BathScene, HeadphoneScene, PalScene]
       }
 
       const game = new Phaser.Game(config)
