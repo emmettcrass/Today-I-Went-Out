@@ -7,221 +7,77 @@ class GameScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.atlas('grub', '/assets/imgs/anim/grubAnim.png', '/assets/imgs/anim/grubAnim.json');
-    this.load.image('desk', '/assets/imgs/bRoom/desk.png');
-    this.load.image('bed', '/assets/imgs/bRoom/bed.png');
-    this.load.image('dresser', '/assets/imgs/bRoom/dresser.png');
+    this.load.atlas('player', '/assets/imgs/player.png', '/assets/imgs/player.json');
+    this.load.image('table', '/assets/imgs/table.PNG');
+    this.load.image('bed', '/assets/imgs/bed.PNG');
+    this.load.image('tv', '/assets/imgs/tv.PNG');
   }
 
   create() {
     this.headphones = this.physics.add.image(640, 140, '#')
     this.headphones = this.physics.add.image(640, 230, '#')
 
-    this.desk = this.physics.add.image(700, 162, 'desk')
-    this.desk.setSize(198, 69, true)
-    this.desk.body.setOffset(0, 0)
-    this.desk.setImmovable(true)
+    this.table = this.physics.add.image(700, 162, 'table')
+    this.table.setSize(198, 69, true)
+    this.table.body.setOffset(0, 0)
+    this.table.setImmovable(true)
 
-    this.dresser = this.physics.add.image(370, 150, 'dresser')
-    this.dresser.setSize(250, 125, true)
-    this.dresser.body.setOffset(0, 0)
-    this.dresser.setImmovable(true)
+    this.tv = this.physics.add.image(370, 150, 'tv')
+    this.tv.setSize(250, 125, true)
+    this.tv.body.setOffset(0, 0)
+    this.tv.setImmovable(true)
 
     this.bed = this.physics.add.image(84, 295, 'bed')
     this.bed.setSize(165, 325, true)
     this.bed.body.setOffset(0, 0)
     this.bed.setImmovable(true)
 
-    //make grub
-    this.grub = this.physics.add.sprite(370, 400, 'grub');
-    this.grub.setSize(173, 229, true)
-    this.grub.body.setOffset(20, 15)
-    var frameNames = this.textures.get('grub').getFrameNames();
+    //make player
+    this.player = this.physics.add.sprite(370, 400, 'player');
+    this.player.setSize(98, 165, true)
+    this.player.body.setOffset(20, 15)
+    var frameNames = this.textures.get('player').getFrameNames();
 
-    //grub animations//
+    //player animations//
 
     console.log(frameNames);
     console.log("you made it");
     this.anims.create({
-      key: 'walkRight',
-      frames: this.anims.generateFrameNames('grub', {
+      key: 'walk',
+      frames: this.anims.generateFrameNames('player', {
           start: 1,
           end: 6,
-          zeroPad: 2,
-          prefix: 'walkR-',
+          zeroPad: 3,
+          prefix: 'rw-',
           suffix: '.png'
         }),
       frameRate: 6,
-      repeat: -1,
-    },
-    {
-      key: 'walkLeft',
-      frames: this.anims.generateFrameNames('grub', {
-          start: 1,
-          end: 6,
-          zeroPad: 2,
-          prefix: 'walkL-',
-          suffix: '.png'
-        }),
-      frameRate: 6,
-      repeat: -1,
-    },
-    {
-      key: 'walkDown',
-      frames: this.anims.generateFrameNames('grub', {
-          start: 1,
-          end: 6,
-          zeroPad: 2,
-          prefix: 'wD-',
-          suffix: '.png'
-        }),
-      frameRate: 6,
-      repeat: -1,
-    },
-    {
-      key: 'walkUp',
-      frames: this.anims.generateFrameNames('grub', {
-          start: 1,
-          end: 6,
-          zeroPad: 2,
-          prefix: 'wU-',
-          suffix: '.png'
-        }),
-      frameRate: 6,
-      repeat: -1,
-    },
-    {
-      key: 'walkUhp',
-      frames: this.anims.generateFrameNames('grub', {
-          start: 1,
-          end: 6,
-          zeroPad: 2,
-          prefix: 'wUhp-',
-          suffix: '.png'
-        }),
-      frameRate: 6,
-      repeat: -1,
-    },
-    {
-      key: 'walkDhp',
-      frames: this.anims.generateFrameNames('grub', {
-          start: 1,
-          end: 6,
-          zeroPad: 2,
-          prefix: 'wDhp-',
-          suffix: '.png'
-        }),
-      frameRate: 6,
-      repeat: -1,
-    },
-    {
-      key: 'walkLhp',
-      frames: this.anims.generateFrameNames('grub', {
-          start: 1,
-          end: 6,
-          zeroPad: 2,
-          prefix: 'wLhp-',
-          suffix: '.png'
-        }),
-      frameRate: 6,
-      repeat: -1,
-    },
-    {
-      key: 'walkRhp',
-      frames: this.anims.generateFrameNames('grub', {
-          start: 1,
-          end: 6,
-          zeroPad: 2,
-          prefix: 'wRhp-',
-          suffix: '.png'
-        }),
-      frameRate: 6,
-      repeat: -1,
-    },
-    {
-      key: 'idleL',
-      frames: this.anims.generateFrameNames('grub', {
-          start: 1,
-          end: 6,
-          zeroPad: 2,
-          prefix: 'idleL-',
-          suffix: '.png'
-        }),
-      frameRate: 6,
-      repeat: -1,
-    },
-    {
-      key: 'idleR',
-      frames: this.anims.generateFrameNames('grub', {
-          start: 1,
-          end: 6,
-          zeroPad: 2,
-          prefix: 'idleR-',
-          suffix: '.png'
-        }),
-      frameRate: 6,
-      repeat: -1,
-    },
-    {
-      key: 'idleRhp',
-      frames: this.anims.generateFrameNames('grub', {
-          start: 1,
-          end: 6,
-          zeroPad: 2,
-          prefix: 'idleRhp-',
-          suffix: '.png'
-        }),
-      frameRate: 6,
-      repeat: -1,
-    },
-    {
-      key: 'idleLhp',
-      frames: this.anims.generateFrameNames('grub', {
-          start: 1,
-          end: 6,
-          zeroPad: 2,
-          prefix: 'idleLhp-',
-          suffix: '.png'
-        }),
-      frameRate: 6,
-      repeat: -1,
-    },
-    {
-      key: 'IdleDown',
-      frames: this.anims.generateFrameNames('grub', {
-          start: 1,
-          end: 1,
-          zeroPad: 0,
-          prefix: 'IdleDown',
-          suffix: '.png'
-        }),
-      frameRate: 1,
       repeat: -1,
     });
     //this works//
     /*this.anims.create({
       key: 'walk',
       frames: [
-          { key: 'grub',frame:"rw-001.png" },
-          { key: 'grub',frame:"rw-002.png" },
-          { key: 'grub',frame:"rw-003.png" },
-          { key: 'grub',frame:"rw-004.png" },
-          { key: 'grub',frame:"rw-005.png" },
-          { key: 'grub',frame:"rw-006.png" },
+          { key: 'player',frame:"rw-001.png" },
+          { key: 'player',frame:"rw-002.png" },
+          { key: 'player',frame:"rw-003.png" },
+          { key: 'player',frame:"rw-004.png" },
+          { key: 'player',frame:"rw-005.png" },
+          { key: 'player',frame:"rw-006.png" },
       ],
       frameRate: 6,
       repeat: -1
     });
     */
 
-    //keeps the grub in screen//
-    this.grub.setCollideWorldBounds(true)
+    //keeps the player in screen//
+    this.player.setCollideWorldBounds(true)
 
     //set collisions
-    this.physics.add.collider(this.grub, this.headphones)
-    this.physics.add.collider(this.grub, this.dresser)
-    this.physics.add.collider(this.grub, this.desk)
-    this.physics.add.collider(this.grub, this.bed)
+    this.physics.add.collider(this.player, this.heaphones)
+    this.physics.add.collider(this.player, this.tv)
+    this.physics.add.collider(this.player, this.table)
+    this.physics.add.collider(this.player, this.bed)
 
     /*make an align grid
             this.aGrid = new AlignGrid({
@@ -235,7 +91,7 @@ class GameScene extends Phaser.Scene {
           this.aGrid.showNumbers();
           */
 
-    this.physics.add.overlap(this.grub, this.headphones, this.collectItem, null, this)
+    this.physics.add.overlap(this.player, this.headphones, this.collectItem, null, this)
 
     /* function detectOverlap() {
       this.onHeadphones = true
@@ -253,38 +109,39 @@ class GameScene extends Phaser.Scene {
     })
     this.input.on('pointerdown', () => {
       this.scene.stop('GameScene')
-      this.scene.start('EduScene')
+      this.scene.start('Transit')
     })
+
   }
 
   update() {
     // Update based on keypress here!
-    this.grub.setVelocity(0)
+    this.player.setVelocity(0)
 
     if (this.cursors.right.isDown) {
-      this.grub.setVelocityX(150)
+      this.player.setVelocityX(150)
     } else if (this.cursors.left.isDown) {
-      this.grub.setVelocityX(-150)
+      this.player.setVelocityX(-150)
     } else {
-      this.grub.setVelocityX(0);
+      this.player.setVelocityX(0);
     }
 
     if (this.cursors.up.isDown) {
-      this.grub.setVelocityY(-150)
+      this.player.setVelocityY(-150)
     } else if (this.cursors.down.isDown) {
-      this.grub.setVelocityY(150)
+      this.player.setVelocityY(150)
     } else {
-      this.grub.setVelocityY(0)
+      this.player.setVelocityY(0)
     }
 
-    if (this.grub.body.velocity.x !== 0 || this.grub.body.velocity.y !== 0) {
-      this.grub.play('walkRight', true);
+    if (this.player.body.velocity.x !== 0 || this.player.body.velocity.y !== 0) {
+      this.player.play('walk', true);
     } else {
-      this.grub.play('idleDown', true);
+      this.player.play('idle', true);
     }
   }
   //this destroys the headphone item when collected, pauses GameScene and starts HeadphoneScene
-  collectItem(grub, headphones) {
+  collectItem(player, headphones) {
     headphones.destroy()
     this.onHeadphones = true
     console.log(`made it to collectitem`)
@@ -293,3 +150,24 @@ class GameScene extends Phaser.Scene {
     this.scene.launch('HeadphoneScene')
   }
 }
+
+var createLabel = function (scene, text) {
+  return scene.rexUI.add.label({
+      width: 40, // Minimum width of round-rectangle
+      height: 40, // Minimum height of round-rectangle
+    
+      background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x5e92f3),
+
+      text: scene.add.text(0, 0, text, {
+          fontSize: '24px'
+      }),
+
+      space: {
+          left: 10,
+          right: 10,
+          top: 10,
+          bottom: 10
+      }
+  });
+}
+
