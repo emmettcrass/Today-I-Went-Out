@@ -2,8 +2,9 @@
 <html lang="en">
   <head>
     <title>Human Game</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.55.2/phaser.min.js"></script>
-    <!--<script src="/libs/phaser.min.js"></script>*/ (ONLY FOR OFFLINE CODING)-->
+    <link href="/styles.css" type="text/css" rel="stylesheet">
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.55.2/phaser.min.js"></script> (For online coding) -->
+    <script src="/libs/phaser.min.js"></script>
     <!-- <script src="/basicButton.js"></script> -->
     <script src="/MenuScene.js"></script>
     <script src="/GameScene.js"></script>
@@ -19,11 +20,11 @@
       const gameState = {}
 
       const config = {
-        type: Phaser.AUTO,
+        type: Phaser.WebGL || Phaser.AUTO,
         width: 800,
-        height: 600,
+        height: 576,
         roundPixels: true,
-        backgroundColor: '#5f2a55',
+        backgroundColor: '#ffffff',
         physics: {
           default: 'arcade',
           arcade: {
@@ -32,7 +33,7 @@
             debug: true
           }
         },
-        scene: [MenuScene, GameScene, EduScene, BathScene, HeadphoneScene, PalScene]
+        scene: [GameScene, EduScene, BathScene, HeadphoneScene, PalScene]
       }
 
       const game = new Phaser.Game(config)
