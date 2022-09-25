@@ -53,7 +53,8 @@ class GameScene extends Phaser.Scene {
         }),
       frameRate: 6,
       repeat: -1,
-    },
+    });
+    this.anims.create(
     {
       key: 'walkLeft',
       frames: this.anims.generateFrameNames('grub', {
@@ -65,79 +66,86 @@ class GameScene extends Phaser.Scene {
         }),
       frameRate: 6,
       repeat: -1,
-    },
+    });
+    this.anims.create(
     {
-      key: 'walkDown',
+      key: 'walkD',
       frames: this.anims.generateFrameNames('grub', {
           start: 1,
           end: 6,
           zeroPad: 2,
-          prefix: 'wD-',
+          prefix: 'walkD-',
           suffix: '.png'
         }),
       frameRate: 6,
       repeat: -1,
-    },
+    });
+    this.anims.create(
     {
       key: 'walkUp',
       frames: this.anims.generateFrameNames('grub', {
           start: 1,
           end: 6,
           zeroPad: 2,
-          prefix: 'wU-',
+          prefix: 'walkU-',
           suffix: '.png'
         }),
       frameRate: 6,
       repeat: -1,
-    },
+    });
+    this.anims.create(
     {
       key: 'walkUhp',
       frames: this.anims.generateFrameNames('grub', {
           start: 1,
           end: 6,
           zeroPad: 2,
-          prefix: 'wUhp-',
+          prefix: 'walkUhp-',
           suffix: '.png'
         }),
       frameRate: 6,
       repeat: -1,
-    },
+    });
+    this.anims.create(
     {
       key: 'walkDhp',
       frames: this.anims.generateFrameNames('grub', {
           start: 1,
           end: 6,
           zeroPad: 2,
-          prefix: 'wDhp-',
+          prefix: 'walkDhp-',
           suffix: '.png'
         }),
       frameRate: 6,
       repeat: -1,
-    },
+    });
+    this.anims.create(
     {
       key: 'walkLhp',
       frames: this.anims.generateFrameNames('grub', {
           start: 1,
           end: 6,
           zeroPad: 2,
-          prefix: 'wLhp-',
+          prefix: 'walkLhp-',
           suffix: '.png'
         }),
       frameRate: 6,
       repeat: -1,
-    },
+    });
+    this.anims.create(
     {
       key: 'walkRhp',
       frames: this.anims.generateFrameNames('grub', {
           start: 1,
           end: 6,
           zeroPad: 2,
-          prefix: 'wRhp-',
+          prefix: 'walkRhp-',
           suffix: '.png'
         }),
       frameRate: 6,
       repeat: -1,
-    },
+    });
+    this.anims.create(
     {
       key: 'idleL',
       frames: this.anims.generateFrameNames('grub', {
@@ -149,50 +157,54 @@ class GameScene extends Phaser.Scene {
         }),
       frameRate: 6,
       repeat: -1,
-    },
+    });
+    this.anims.create(
     {
       key: 'idleR',
       frames: this.anims.generateFrameNames('grub', {
           start: 1,
-          end: 6,
+          end: 12,
           zeroPad: 2,
           prefix: 'idleR-',
           suffix: '.png'
         }),
-      frameRate: 6,
+      frameRate: 12,
       repeat: -1,
-    },
+    });
+    this.anims.create(
     {
       key: 'idleRhp',
       frames: this.anims.generateFrameNames('grub', {
           start: 1,
-          end: 6,
+          end: 12,
           zeroPad: 2,
           prefix: 'idleRhp-',
           suffix: '.png'
         }),
-      frameRate: 6,
+      frameRate: 12,
       repeat: -1,
-    },
+    });
+    this.anims.create(
     {
       key: 'idleLhp',
       frames: this.anims.generateFrameNames('grub', {
           start: 1,
-          end: 6,
+          end: 12,
           zeroPad: 2,
           prefix: 'idleLhp-',
           suffix: '.png'
         }),
-      frameRate: 6,
+      frameRate: 12,
       repeat: -1,
-    },
+    });
+    this.anims.create(
     {
-      key: 'IdleDown',
+      key: 'idleDown',
       frames: this.anims.generateFrameNames('grub', {
           start: 1,
           end: 1,
-          zeroPad: 0,
-          prefix: 'IdleDown',
+          zeroPad: 2,
+          prefix: 'idleDown-',
           suffix: '.png'
         }),
       frameRate: 1,
@@ -277,12 +289,29 @@ class GameScene extends Phaser.Scene {
       this.grub.setVelocityY(0)
     }
 
-    if (this.grub.body.velocity.x !== 0 || this.grub.body.velocity.y !== 0) {
+  //   if (this.grub.body.velocity.x !== 0 || this.grub.body.velocity.y !== 0) {
+  //     this.grub.play('walkRight', true);
+  //   } else {
+  //     this.grub.play('idleDown', true);
+  //   }
+  // }
+  if (this.grub.body.velocity.x !== 0 && this.grub.body.velocity.x < 0) {
+    this.grub.play('walkLeft', true);
+  } else if (this.grub.body.velocity.x !== 0 && this.grub.body.velocity.x > 0) {
       this.grub.play('walkRight', true);
-    } else {
-      this.grub.play('idleDown', true);
-    }
+  } else if (this.grub.body.velocity.y !== 0 && this.grub.body.velocity.y < 0) {
+    this.grub.play('walkUp', true);
+  } else if (this.grub.body.velocity.y !== 0 && this.grub.body.velocity.y > 0) {
+    this.grub.play('walkD', true);
+  } else {
+    this.grub.play('idleDown', true);
   }
+
+
+if (this.cursors.right.isUp) {
+  this.grub.anims.play('idleR', true);
+}
+}
   //this destroys the headphone item when collected, pauses GameScene and starts HeadphoneScene
   collectItem(grub, headphones) {
     headphones.destroy()
