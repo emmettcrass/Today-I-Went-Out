@@ -3,7 +3,7 @@ class HeadphoneScene extends Phaser.Scene {
     super({ key: 'HeadphoneScene' })
   }
   preload() {
-    this.load.image('hpInfo', '/assets/imgs/placehold.jpg')
+    this.load.image('hpInfo', '/assets/imgs/messageBox.jpg')
   }
 
   create() {

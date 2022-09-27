@@ -4,12 +4,14 @@
     <title>Human Game</title>
     <link href="/styles.css" type="text/css" rel="stylesheet">
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.55.2/phaser.min.js"></script> (For online coding) -->
-    <script src="/libs/phaser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/phaser-matter-collision-plugin"></script>
+    <!-- <script src="/libs/phaser.min.js"></script> -->
     <!-- <script src="/basicButton.js"></script> -->
-    <script src="/Preloader.js"></script>
+    <!-- <script src="/Preloader.js"></script> -->
     <script src="/MenuScene.js"></script>
     <script src="/GameScene.js"></script>
-    <script src="/HeadphoneScene.js"></script>
+    <script src="/popupScenes/HeadphoneScene.js"></script>
     <script src="/EduScene.js"></script>
     <script src="/BathScene.js"></script>
     <script src="/PalScene.js"></script>
@@ -34,7 +36,7 @@
             debug: true
           }
         },
-        scene: [Preloader, GameScene, EduScene, BathScene, HeadphoneScene, PalScene]
+        scene: [GameScene, EduScene, BathScene, HeadphoneScene, PalScene]
       }
 
       const game = new Phaser.Game(config)

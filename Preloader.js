@@ -20,6 +20,7 @@ class Preloader extends Phaser.Scene
         this.load.image('smallAgenda', '/assets/imgs/bRoom/smallAgenda.png');
         this.load.image('yarnLittle', '/assets/imgs/bRoom/yarnLittle.png');
         this.load.image('boxShoe', '/assets/imgs/bRoom/boxShoe.png');
+        this.load.image('chair', '/assets/imgs/bRoom/chair.png');
         //classroom
         this.load.image('class', '/assets/imgs/class/class.png');
         this.load.image('fileCabinet', '/assets/imgs/class/fileCabinet.png');
@@ -43,7 +44,8 @@ class Preloader extends Phaser.Scene
 
         //characters
         //grub
-        this.load.atlas('grub', '/assets/imgs/anim/grubAnim.png', '/assets/imgs/anim/grubAnim.json');
+        // this.load.animation('grubAnim', 'assets/imgs/anim/grubAnim.json');
+        this.load.atlas('grub', 'assets/imgs/anim/grubAnim.png', 'assets/imgs/anim/grubAnim.json');
         this.load.image('grubDetermined', '/assets/imgs/chars/grub/grubDetermined.png');
         this.load.image('grubNormal', '/assets/imgs/chars/grub/grubNormal.png');
         this.load.image('grubProud', '/assets/imgs/chars/grub/grubProud.png');
@@ -69,10 +71,18 @@ class Preloader extends Phaser.Scene
 
 	create()
 	{
+        // this.grub.animations.add('walkleft');
+        // this.grub.animations.add('walklefthp');
+        // this.grub.animations.add('walkrighthp');
+        // this.grub.animations.add('walkright');
+        // this.grub.animations.add('walkup');
+        // this.grub.animations.add('walkuphp');
+        // this.grub.animations.add('walkdown');
+        // this.grub.animations.add('walkdownhp');
 
         //lets make some animations boys
         this.anims.create({
-            key: 'walkRight',
+            key: 'walk-right',
             frames: this.anims.generateFrameNames('grub', {
                 start: 1,
                 end: 6,
@@ -85,7 +95,7 @@ class Preloader extends Phaser.Scene
           });
           this.anims.create(
           {
-            key: 'walkLeft',
+            key: 'walk-left',
             frames: this.anims.generateFrameNames('grub', {
                 start: 1,
                 end: 6,
@@ -98,7 +108,7 @@ class Preloader extends Phaser.Scene
           });
           this.anims.create(
           {
-            key: 'walkD',
+            key: 'walk-down',
             frames: this.anims.generateFrameNames('grub', {
                 start: 1,
                 end: 6,
@@ -111,7 +121,7 @@ class Preloader extends Phaser.Scene
           });
           this.anims.create(
           {
-            key: 'walkUp',
+            key: 'walk-up',
             frames: this.anims.generateFrameNames('grub', {
                 start: 1,
                 end: 6,
@@ -124,7 +134,7 @@ class Preloader extends Phaser.Scene
           });
           this.anims.create(
           {
-            key: 'walkUhp',
+            key: 'Hpwalk-up',
             frames: this.anims.generateFrameNames('grub', {
                 start: 1,
                 end: 6,
@@ -137,7 +147,7 @@ class Preloader extends Phaser.Scene
           });
           this.anims.create(
           {
-            key: 'walkDhp',
+            key: 'Hpwalk-down',
             frames: this.anims.generateFrameNames('grub', {
                 start: 1,
                 end: 6,
@@ -150,7 +160,7 @@ class Preloader extends Phaser.Scene
           });
           this.anims.create(
           {
-            key: 'walkLhp',
+            key: 'Hpwalk-left',
             frames: this.anims.generateFrameNames('grub', {
                 start: 1,
                 end: 6,
@@ -163,7 +173,7 @@ class Preloader extends Phaser.Scene
           });
           this.anims.create(
           {
-            key: 'walkRhp',
+            key: 'Hpwalk-right',
             frames: this.anims.generateFrameNames('grub', {
                 start: 1,
                 end: 6,
@@ -176,20 +186,20 @@ class Preloader extends Phaser.Scene
           });
           this.anims.create(
           {
-            key: 'idleL',
+            key: 'idle-left',
             frames: this.anims.generateFrameNames('grub', {
                 start: 1,
-                end: 6,
+                end: 12,
                 zeroPad: 2,
                 prefix: 'idleL-',
                 suffix: '.png'
               }),
-            frameRate: 6,
+            frameRate: 8,
             repeat: -1,
           });
           this.anims.create(
           {
-            key: 'idleR',
+            key: 'idle-right',
             frames: this.anims.generateFrameNames('grub', {
                 start: 1,
                 end: 12,
@@ -197,12 +207,12 @@ class Preloader extends Phaser.Scene
                 prefix: 'idleR-',
                 suffix: '.png'
               }),
-            frameRate: 6,
+            frameRate: 8,
             repeat: -1,
           });
           this.anims.create(
           {
-            key: 'idleRhp',
+            key: 'Hpidle-right',
             frames: this.anims.generateFrameNames('grub', {
                 start: 1,
                 end: 12,
@@ -210,12 +220,12 @@ class Preloader extends Phaser.Scene
                 prefix: 'idleRhp-',
                 suffix: '.png'
               }),
-            frameRate: 6,
+            frameRate: 8,
             repeat: -1,
           });
           this.anims.create(
           {
-            key: 'idleLhp',
+            key: 'Hpidle-left',
             frames: this.anims.generateFrameNames('grub', {
                 start: 1,
                 end: 12,
@@ -223,12 +233,12 @@ class Preloader extends Phaser.Scene
                 prefix: 'idleLhp-',
                 suffix: '.png'
               }),
-            frameRate: 6,
+            frameRate: 8,
             repeat: -1,
           });
           this.anims.create(
           {
-            key: 'idleDown',
+            key: 'idle-down',
             frames: this.anims.generateFrameNames('grub', {
                 start: 1,
                 end: 1,
