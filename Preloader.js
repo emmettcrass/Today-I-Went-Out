@@ -1,4 +1,3 @@
-//add this if you have time. it will preload all the assets before the game begins
 class Preloader extends Phaser.Scene
 {
     constructor() {
@@ -19,8 +18,10 @@ class Preloader extends Phaser.Scene
         this.load.image('bedroom', '/assets/imgs/bRoom/bedroom.png');
         this.load.image('smallAgenda', '/assets/imgs/bRoom/smallAgenda.png');
         this.load.image('yarnLittle', '/assets/imgs/bRoom/yarnLittle.png');
+        this.load.image('yarn', '/assets/imgs/bRoom/Yarn.png');
         this.load.image('boxShoe', '/assets/imgs/bRoom/boxShoe.png');
         this.load.image('chair', '/assets/imgs/bRoom/chair.png');
+        this.load.image('headphones', '/assets/imgs/bRoom/hpLittle.png');
         //classroom
         this.load.image('class', '/assets/imgs/class/class.png');
         this.load.image('fileCabinet', '/assets/imgs/class/fileCabinet.png');
@@ -39,8 +40,7 @@ class Preloader extends Phaser.Scene
         this.load.image('loading', '/assets/imgs/loading.png');
         this.load.image('messageBox', '/assets/imgs/messageBox.png');
         this.load.image('nextButton', '/assets/imgs/nextButton.png');
-
-
+        this.load.image('invisible', '/assets/imgs/invisible.png');
 
         //characters
         //grub
@@ -249,7 +249,7 @@ class Preloader extends Phaser.Scene
             frameRate: 1,
             repeat: -1,
           });
-          this.scene.start('GameScene');
+          this.scene.start('MenuScene');
 		}
 	}
 

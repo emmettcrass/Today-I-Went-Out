@@ -8,9 +8,9 @@ class GameScene extends Phaser.Scene {
 
   create() {
     this.bedroom = this.add.image(400, 288, 'bedroom')
-    // var music = this.sound.add('broomMusic');
+    var music = this.sound.add('broomMusic');
 
-    // music.play();
+    music.play();
 
     this.headphones = this.physics.add.image(640, 140, '#')
     this.headphones = this.physics.add.image(640, 230, '#')
@@ -140,11 +140,11 @@ class GameScene extends Phaser.Scene {
   } else if (this.grub.body.velocity.y !== 0 && this.grub.body.velocity.y > 0) {
     this.grub.play('walkdown', true);
   } else if (this.cursors.left.isUp && this.cursors.isDown !== 1) {
-    this.grub.anims.play('idleleft', true);
-  } else if (this.cursors.right.isUp && this.cursors.isDown !== 1) {
-    this.grub.anims.play('idleright', true);
-  } else {
-    this.grub.play('idledown', true);
+  //   this.grub.anims.play('idleleft', true);
+  // } else if (this.cursors.right.isUp && this.cursors.isDown !== 1) {
+  //   this.grub.anims.play('idleright', true);
+  // } else {
+    this.grub.play('idle-left', true);
   }
 // start animation when created
 

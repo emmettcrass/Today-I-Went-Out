@@ -2,16 +2,24 @@
 <html lang="en">
   <head>
     <title>Human Game</title>
+    <link rel="icon" href="assets/imgs/bRoom/yarnLittle.png">
     <link href="/styles.css" type="text/css" rel="stylesheet">
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.55.2/phaser.min.js"></script> (For online coding) -->
 <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/phaser-matter-collision-plugin"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- <script src="/libs/phaser.min.js"></script> -->
     <!-- <script src="/basicButton.js"></script> -->
-    <!-- <script src="/Preloader.js"></script> -->
+    <script src="/Preloader.js"></script>
     <script src="/MenuScene.js"></script>
     <script src="/GameScene.js"></script>
     <script src="/popupScenes/HeadphoneScene.js"></script>
+    <script src="/popupScenes/AgendaScene.js"></script>
+    <!-- <script src="/popupScenes/KneeScene.js"></script>
+    <script src="/popupScenes/NootScene.js"></script>
+    <script src="/popupScenes/SnortScene.js"></script>
+    <script src="/popupScenes/teacherScene1.js"></script>
+    <script src="/popupScenes/teacherScene2.js"></script>
+    <script src="/popupScenes/YarnScene.js"></script> -->
     <script src="/EduScene.js"></script>
     <script src="/BathScene.js"></script>
     <script src="/PalScene.js"></script>
@@ -19,6 +27,10 @@
 	<script type="text/javascript" src="/utils/alignGrid.js"></script>-->
   </head>
   <body>
+    <!-- <div id="talkSpriteContainer">
+      <img id="teacherS1" src="assets/imgs/chars/teacher/teacherTired.png">
+      <div id="click-me">Change image</div>
+    </div> -->
     <script>
       const gameState = {}
 
@@ -33,11 +45,12 @@
           arcade: {
             gravity: { y: 0 },
             enableBody: true,
-            debug: true
+            debug: false,
           }
         },
-        scene: [GameScene, EduScene, BathScene, HeadphoneScene, PalScene]
+        scene: [Preloader, MenuScene, GameScene, EduScene, BathScene, PalScene, HeadphoneScene, AgendaScene,]
       }
+      // YarnScene, KneeScene, NootScene, SnortScene, teacherScene1, teacherScene1
 
       const game = new Phaser.Game(config)
     </script>
