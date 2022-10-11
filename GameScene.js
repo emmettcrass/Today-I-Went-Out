@@ -251,7 +251,7 @@ class GameScene extends Phaser.Scene
 		console.log(`made it to collectHp`)
 		this.scene.pause('GameScene')
 		console.log(`made it to pause`)
-		this.scene.launch('HeadphoneScene')
+		this.scene.launch('AgendaScene')
 	}
 
 	collectAgenda(grub, smallAgenda)

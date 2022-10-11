@@ -9,6 +9,7 @@ class MenuScene extends Phaser.Scene {
 	  }
 	  
 	create() {
+
 		this.messageBox = this.add.image(400, 270, 'messageBox')
 		this.nextButton = this.add.image(490, 365, 'nextButton').setInteractive();
 
