@@ -8,3 +8,10 @@ body {
 
     transform: translateY(25%) translateX(25%);
 }
+
+#dog {
+    font-size: larger;
+    background-color: aliceblue;
+    z-index: 8;
+    transform: translateY(515%) translateX(25%);
+}
